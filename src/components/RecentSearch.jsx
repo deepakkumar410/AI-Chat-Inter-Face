@@ -1,28 +1,68 @@
-function RecentSearch({recentHistory, setRecentHistory,setSelectedHistory}) {
+import { useState } from "react";
+import { CgMenuRightAlt } from "react-icons/cg";
+import { IoCloseOutline } from "react-icons/io5";
+import { MdDelete } from "react-icons/md";
 
-    const clearHistory = () => {
-        localStorage.clear();
-        setRecentHistory([])
-      }
+function RecentSearch({ recentHistory, setRecentHistory, setSelectedHistory, darkMode }) {
+    const clearHistory = (index) => {
+        console.log(index);
+        const updatedHistory = recentHistory.filter((_, item) => item !== index);
+        setRecentHistory(updatedHistory);
+    };
+
+    const [showmenu, setShowMenu] = useState(false);
 
     return (
         <>
-            <div className='col-span-1 dark:bg-zinc-800 bg-red-100 pt-3'>
-                <h1 className='text-xl dark:text-white text-zinc-800 flex text-center justify-center'>
-                    <span>Recent Search</span>
-                    <button onClick={clearHistory} className='cursor-pointer'><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#EFEFEF"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" /></svg></button>
-                </h1>
-                <ul className='text-left overflow-auto mt-2'>
-                    {
-                        recentHistory && recentHistory.map((item, index) => (
-                            <li key={index} onClick={() => setSelectedHistory(item)} className='pl-5 px-5 truncate dark:text-zinc-400 text-zinc-700 cursor-pointer dark:hover:bg-zinc-700  dark:hover:text-zinc-200 hover:bg-red-200 hover:text-zinc-800' >{item}</li>
-                        ))
-                    }
-                </ul>
-            </div>
+            <section >
+                <button
+                    onClick={() => setShowMenu(!showmenu)}
+                    className={` ${showmenu ? "hidden" : "block"} ${ darkMode ? "text-white" : "text-black "} flex w-full text-3xl px-4 mt-3 cursor-pointer`}
+                >
+                 <CgMenuRightAlt />
+                </button>
+                <div
+                    className={`${
+                        showmenu ? "translate-x-0" : "-translate-x-full"
+                    } absolute  top-0 left-0 h-screen w-[80vw] sm:w-[60vw] md:w-[40vw]  lg:w-[25vw] xl:w-[20vw] col-span-1  ${darkMode ? "dark:bg-zinc-800" : "bg-gray-200"} pt-3 transition-transform duration-300 z-50`}
+                >
+                    <div className="flex justify-between px-4">
+                        <h1 className="text-xl dark:text-white text-zinc-800 flex text-center font-[600] justify-center">
+                            <span>Recent Search</span>
+                        </h1>
+                        <button
+                            onClick={() => setShowMenu(false)}
+                            className={` ${darkMode ? "text-white" : "text-black" } mb-3 cursor-pointer hover:text-red-400 transition-all duration-300  text-2xl`}
+                        >
+                            <IoCloseOutline />
+                        </button>
+                    </div>
+                    <ul className="text-left overflow-auto mt-2 w-full max-h-[80vh] px-2">
+                        {recentHistory &&
+                            recentHistory.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="flex justify-between items-center px-2 b"
+                                >
+                                    <li
+                                        onClick={() => setSelectedHistory(item)}
+                                        className="mb-4  truncate dark:text-zinc-400 text-zinc-700 cursor-pointer dark:hover:bg-zinc-700 dark:hover:text-zinc-200  hover:text-zinc-800 w-full"
+                                    >
+                                        {item}
+                                    </li>
+                                    <button
+                                        onClick={() => clearHistory(index)}
+                                        className="cursor-pointer text-xl text-gray-400 pl-2 hover:text-red-400"
+                                    >
+                                        <MdDelete />
+                                    </button>
+                                </div>
+                            ))}
+                    </ul>
+                </div>
+            </section>
         </>
-    )
-
+    );
 }
 
-export default RecentSearch
+export default RecentSearch;
