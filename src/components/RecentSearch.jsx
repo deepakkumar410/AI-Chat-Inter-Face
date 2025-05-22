@@ -8,6 +8,7 @@ function RecentSearch({ recentHistory, setRecentHistory, setSelectedHistory, dar
         console.log(index);
         const updatedHistory = recentHistory.filter((_, item) => item !== index);
         setRecentHistory(updatedHistory);
+         localStorage.setItem('history', JSON.stringify(updatedHistory));
     };
 
     const [showmenu, setShowMenu] = useState(false);

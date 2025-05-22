@@ -117,7 +117,7 @@ function App() {
 
 
           <div className="flex flex-col flex-1 h-screen relative px-2 sm:px-4">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-[500]  mt-8 bg-clip-text text-transparent bg-gradient-to-r from-pink-700 to-violet-700 mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-[500] mt-6  max-[700px]:mt-18 bg-clip-text text-transparent bg-gradient-to-r from-pink-700 to-violet-700 mb-4">
               Welcome! How can I assist you today ?
             </h1>
 
