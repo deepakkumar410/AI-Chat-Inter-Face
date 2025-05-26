@@ -105,7 +105,7 @@ function App() {
             <div className="relative group top-2">
               <button
                 onClick={() => setClearData(true)}
-                className={` ${ darkMode ? "text-white" : "text-black"} px-4 py-2 transition cursor-pointer`}
+                className={` ${darkMode ? "text-white" : "text-black"} px-4 py-2 transition cursor-pointer`}
               >
                 <PiNotePencilBold size={25} />
               </button>
@@ -116,7 +116,7 @@ function App() {
           </div>
 
 
-          <div className="flex flex-col flex-1 h-screen relative px-2 sm:px-4">
+          <div className="flex flex-col flex-1 h-screen w-full relative px-2 sm:px-4">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-[500] mt-6  max-[700px]:mt-18 bg-clip-text text-transparent bg-gradient-to-r from-pink-700 to-violet-700 mb-4">
               Welcome! How can I assist you today ?
             </h1>
@@ -124,7 +124,7 @@ function App() {
 
             {loader && (
               <div role="status" className="flex justify-center h-50 items-center mb-4">
-              <img className='h-[100px] ' src="https://www.pngmart.com/files/23/Loading-PNG-Photos.gif" alt="" />
+                <img className='h-[100px] ' src="https://www.pngmart.com/files/23/Loading-PNG-Photos.gif" alt="" />
                 <span className="sr-only">Loading...</span>
               </div>
             )}
@@ -140,26 +140,9 @@ function App() {
                 ))}
               </ul>
             </div>
-
-
-            <div className="mt-4 mb-4 fixed bottom-4 left-1/2 transform -translate-x-1/2 w-11/12 sm:w-4/5 md:w-3/8 rounded-2xl border border-zinc-700 flex items-center h-14 px-2 dark:bg-zinc-800 bg-white dark:text-white text-gray-800">
-              <input
-                type="text"
-                value={question}
-                onKeyDown={isEnter}
-                onChange={(e) => setQuestion(e.target.value)}
-                className="w-full h-full p-3 outline-none font-[400]"
-                placeholder="Ask anything . . ."
-              />
-              <button onClick={askQuestion}>
-                <MdSend size={25} />
-              </button>
-            </div>
           </div>
         </div>
       </div>
-
-
       <button
         onClick={() => setDarkMode(!darkMode)}
         className={`${darkMode ? 'bg-[#ffffff33]' : 'bg-[#000000b5]'
@@ -167,6 +150,19 @@ function App() {
       >
         {darkMode ? <MdDarkMode size={25} /> : <MdLightMode size={25} />}
       </button>
+      <div className="mt-4 mb-4  absolute bottom-4 left-1/2 transform -translate-x-1/2 w-11/12 sm:w-4/5 md:w-3/8 rounded-2xl border border-zinc-700 flex items-center h-14 px-2 dark:bg-zinc-800 bg-white dark:text-white text-gray-800">
+        <input
+          type="text"
+          value={question}
+          onKeyDown={isEnter}
+          onChange={(e) => setQuestion(e.target.value)}
+          className="w-full h-full p-3 outline-none font-[400]"
+          placeholder="Ask anything . . ."
+        />
+        <button onClick={askQuestion}>
+          <MdSend size={25} />
+        </button>
+      </div>
     </>
   );
 }

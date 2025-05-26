@@ -47,7 +47,7 @@ function RecentSearch({ recentHistory, setRecentHistory, setSelectedHistory, dar
                                 >
                                     <li
                                         onClick={() => setSelectedHistory(item)}
-                                        className="mb-4  truncate dark:text-zinc-400 text-zinc-700 cursor-pointer dark:hover:bg-zinc-700 dark:hover:text-zinc-200  hover:text-zinc-800 w-full"
+                                        className="mb-4  truncate dark:text-zinc-400 text-zinc-700 cursor-pointer  w-full"
                                     >
                                         {item}
                                     </li>

@@ -2,7 +2,7 @@ import Answer from './Answers';
 const QuestionAnswer=({item,index})=>{
     return(
         <>
-            <div key={index + Math.random()} className={item.type == 'q' ? 'flex justify-end' : ''}>
+            <div key={index + Math.random()} className={`${item.type == 'q' ? 'flex justify-end' : ''}  `}>
                     {
                       item.type == 'q' ?
                         <li key={index + Math.random()}
