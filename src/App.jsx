@@ -150,7 +150,7 @@ function App() {
       >
         {darkMode ? <MdDarkMode size={25} /> : <MdLightMode size={25} />}
       </button>
-      <div className="  absolute bottom-4 left-1/2 transform -translate-x-1/2 w-11/12 sm:w-4/5 md:w-3/8 rounded-2xl border border-zinc-700 flex items-center h-14 px-2 dark:bg-zinc-800 bg-white dark:text-white text-gray-800">
+      <div className="  absolute bottom-0 left-1/2 transform -translate-x-1/2 w-11/12 sm:w-4/5 md:w-3/8 rounded-2xl border border-zinc-700 flex items-center h-14 px-2 dark:bg-zinc-800 bg-white dark:text-white text-gray-800">
         <input
           type="text"
           value={question}
